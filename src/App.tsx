@@ -3,6 +3,8 @@ import { Product } from '@/models/product';
 import ProductItem from '@/components/product-item';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
+import { Link } from 'react-router';
+import { ShoppingBasket } from 'lucide-react';
 
 function App() {
   const { cartItems } = useSelector((store: RootState) => store.cart);
@@ -25,6 +27,13 @@ function App() {
       <h1 className='text-2xl font-bold'>Products</h1>
       <div className='flex justify-between items-center'>
         <p>Items in cart: {cartItems.length}</p>
+        <Link
+          to='/cart'
+          className='text-xl bg-blue-500 text-white px-4 py-2 rounded flex items-center gap-2'
+        >
+          <ShoppingBasket />
+          Cart
+        </Link>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
         {products.map((product) => (
